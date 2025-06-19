@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Forge Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Pixel Forge Studio</h1>
+    <p>Crafting code and creativity in a cozy corner of the web.</p>
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <section id="about">
+    <h2>About</h2>
+    <p>Hello! I'm Kimberly, a cozy code crafter and front-end enthusiast building beautiful, welcoming digital spaces.</p>
+  </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="gallery">
+      <div class="card">
+        <img src="images/project1.jpg" alt="Cozy Boardgame App">
+        <p>🎲 Cozy Boardgame App</p>
+      </div>
+      <div class="card">
+        <img src="images/project2.jpg" alt="Farmers Market Website">
+        <p>🌾 Farmers Market Website</p>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email me at: <a href="mailto:hello@pixelforgestudio.com">hello@pixelforgestudio.com</a></p>
+  </section>
+  <footer>
+    <p>© 2025 Pixel Forge Studio. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" style="display:none;">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Expanded view" />
+    <div id="caption"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const caption = document.getElementById('caption');
+      const closeBtn = document.querySelector('.close');
+
+      document.querySelectorAll('.gallery img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+          lightbox.style.display = 'flex';
+          lightboxImg.src = img.src;
+          caption.textContent = img.alt || '';
+        });
+      });
+
+      closeBtn.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          lightbox.style.display = 'none';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          lightbox.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

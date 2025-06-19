@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop - Pixel Forge Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Pixel Forge Studio</h1>
+    <p>Merch Shop</p>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="illustrations.html">Illustrations</a>
+    <a href="shop.html" class="active">Shop</a>
+  </nav>
+  <section>
+    <div class="gallery">
+      <div class="card">
+        <a href="https://yourstore.com/stickers" target="_blank">
+          <img src="images/project1.jpg" alt="Sticker Pack" />
+          <p>🛍️ Cozy Critters Sticker Pack</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="https://yourstore.com/tee" target="_blank">
+          <img src="images/project2.jpg" alt="Logo Tee" />
+          <p>👕 Pixel Forge Logo Tee</p>
+        </a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>© 2025 Pixel Forge Studio. Crafted with love 💖</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" style="display:none;">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Expanded view" />
+    <div id="caption"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const caption = document.getElementById('caption');
+      const closeBtn = document.querySelector('.close');
+
+      document.querySelectorAll('.gallery img').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+          lightbox.style.display = 'flex';
+          lightboxImg.src = img.src;
+          caption.textContent = img.alt || '';
+        });
+      });
+
+      closeBtn.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          lightbox.style.display = 'none';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          lightbox.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
